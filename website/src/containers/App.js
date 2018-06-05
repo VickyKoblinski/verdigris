@@ -101,6 +101,9 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
+thead tr {
+  border-bottom: 1px solid darkgray;
+}
 tr {
   &:nth-child(even){
     background: lightgray;

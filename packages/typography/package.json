@@ -1,0 +1,20 @@
+{
+  "name": "@verdigris/typography",
+  "version": "0.0.0",
+  "description": "Well defined typographic elements found in LifeCycle.",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "verdigris:src": "./src/index.js",
+  "verdigris": {
+    "name": "Typography"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "react": "^16.3.2"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.1"
+  }
+}
