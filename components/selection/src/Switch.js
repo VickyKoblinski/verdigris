@@ -166,7 +166,7 @@ Switch.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
-   * Label on right
+   * Label is positioned to the right of the Switch
    */
   inline: PropTypes.bool,
   /**
