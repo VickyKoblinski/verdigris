@@ -73,6 +73,7 @@ const Label = createComponent(
     fontSize: `${theme.Switch.fontSize}px`,
     lineHeight: theme.Switch.lineHeight,
     marginLeft: `${theme.Switch.spacing * 2}px`,
+    marginRight: `${theme.Switch.spacing * 2}px`
   }),
   'span',
 );
@@ -101,21 +102,29 @@ class Switch extends React.Component {
     }
   }
 
-  render() {
+  switchBodyItems() {
     const { disabled, label } = this.props;
     const { checked } = this.state;
 
+    return [
+      label && <Label disabled={disabled}>{label}</Label>,
+      <Bar>
+        <Checkbox
+          type="checkbox"
+          value={Boolean(checked)}
+          disabled={disabled}
+        />
+        <Handle checked={checked} disabled={disabled} />
+      </Bar>
+    ];
+  }
+
+  render() {
+    const { inline } = this.props;
+
     return (
       <SwitchRoot onClick={this.handleClick} data-component="Switch">
-        <Bar>
-          <Checkbox
-            type="checkbox"
-            value={Boolean(checked)}
-            disabled={disabled}
-          />
-          <Handle checked={checked} disabled={disabled} />
-        </Bar>
-        {label && <Label disabled={disabled}>{label}</Label>}
+        {this.switchBodyItems().map((_, idx, arr) => inline ? arr[arr.length - 1 - idx ] : arr[idx])}
       </SwitchRoot>
     );
   }
@@ -157,6 +166,10 @@ Switch.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
+   * Label on right
+   */
+  inline: PropTypes.bool,
+  /**
    * Text label associated with the Switch
    */
   label: PropTypes.string,
@@ -168,6 +181,7 @@ Switch.propTypes = {
 Switch.defaultProps = {
   checked: false,
   disabled: false,
+  inline: false,
   onChange: noop,
 };
 Switch.themeDefinition = {
